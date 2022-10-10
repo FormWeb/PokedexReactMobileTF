@@ -1,23 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import SearchBar from './component/search-bar/search-bar';
+import { useState } from 'react';
+import PokemonDetail from './component/pokemon-detail/pokemon-detail';
 
 function App() {
+
+  const [pokemonName, setPokemonName] = useState("25")
+
+  const searchPokemon = (p) => {
+    setPokemonName(p)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SearchBar onSearch={searchPokemon}/>
+      <PokemonDetail pokemonName={pokemonName}/>
     </div>
   );
 }
